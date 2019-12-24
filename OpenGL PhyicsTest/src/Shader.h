@@ -20,10 +20,10 @@ public:
 
 	void Compile(const std::string* vertexShader, const std::string* fragmentShader);
 
-	void SetUniform4f(const std::string* name, float v0, float v1, float v2, float v3, bool useShader = false);
-	void SetUniform4f(const std::string* name, glm::vec3 vec, bool useShader = false);
-	void SetUniform1i(const std::string* name, int v0, bool useShader = false);
-	void SetUniformMat4f(const std::string* name, const glm::mat4& matrix, bool useShader = false);
+	void SetUniform4f(const char* name, float v0, float v1, float v2, float v3, bool useShader = false);
+	void SetUniform4f(const char* name, glm::vec4 vec, bool useShader = false);
+	void SetUniform1i(const char* name, int v0, bool useShader = false);
+	void SetUniformMat4f(const char* name, const glm::mat4& matrix, bool useShader = false);
 
 private:
 	unsigned int ShaderErrorCheck(unsigned int& id, unsigned int& type);

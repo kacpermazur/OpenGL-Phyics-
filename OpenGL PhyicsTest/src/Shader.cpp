@@ -30,20 +30,36 @@ void Shader::Compile(const std::string* vertexShader, const std::string* fragmen
 	glDeleteShader(fragmentID);
 }
 
-void Shader::SetUniform4f(const std::string* name, float v0, float v1, float v2, float v3, bool useShader)
+void Shader::SetUniform4f(const char* name, float v0, float v1, float v2, float v3, bool useShader)
 {
+	if (useShader)
+		this->Bind();
+
+	glUniform4f(glGetUniformLocation(this->m_BindID, name), v0, v1, v2, v3);
 }
 
-void Shader::SetUniform4f(const std::string* name, glm::vec3 vec, bool useShader)
+void Shader::SetUniform4f(const char* name, glm::vec4 vec, bool useShader)
 {
+	if (useShader)
+		this->Bind();
+
+	glUniform4f(glGetUniformLocation(this->m_BindID, name), vec.x, vec.y, vec.z, vec.w);
 }
 
-void Shader::SetUniform1i(const std::string* name, int v0, bool useShader)
+void Shader::SetUniform1i(const char* name, int v0, bool useShader)
 {
+	if (useShader)
+		this->Bind();
+
+	glUniform1i(glGetUniformLocation(this->m_BindID, name), v0);
 }
 
-void Shader::SetUniformMat4f(const std::string* name, const glm::mat4& matrix, bool useShader)
+void Shader::SetUniformMat4f(const char* name, const glm::mat4& matrix, bool useShader)
 {
+	if (useShader)
+		this->Bind();
+	
+	glUniformMatrix4fv(glGetUniformLocation(this->m_BindID, name), 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
 unsigned int Shader::ShaderErrorCheck(unsigned int& id, unsigned int& type)
