@@ -164,8 +164,10 @@
     <ClCompile Include="src\libraries\imgui\imgui_demo.cpp" />
     <ClCompile Include="src\libraries\imgui\imgui_draw.cpp" />
     <ClCompile Include="src\libraries\imgui\imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="src\Program.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\libraries\glm\common.hpp" />
     <ClInclude Include="src\libraries\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\libraries\glm\detail\compute_vector_relational.hpp" />

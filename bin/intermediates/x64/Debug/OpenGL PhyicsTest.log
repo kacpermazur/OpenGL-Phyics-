@@ -4,6 +4,7 @@
   imgui_demo.cpp
   imgui_draw.cpp
   imgui_impl_glfw_gl3.cpp
+  Program.cpp
   Generating Code...
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library

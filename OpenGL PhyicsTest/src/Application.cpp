@@ -1,65 +1,26 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include "Application.h"
 
-#include "imgui/imgui.h"
-#include "imgui/imgui_impl_glfw_gl3.h"
-
-#include <iostream>
-
-int main(void)
+Application::Application(const unsigned width, const unsigned height)
+	: m_width(width), m_height(height), m_input(), m_state(ACTIVE)
 {
-	GLFWwindow* window;
+}
 
-	/* Initialize the library */
-	if (!glfwInit())
-		return -1;
+Application::~Application()
+{
+}
 
-	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(800, 600, "Physics OpenGL", NULL, NULL);
-	if (!window)
-	{
-		glfwTerminate();
-		return -1;
-	}
+void Application::Initialize()
+{
+}
 
-	/* Make the window's context current */
-	glfwMakeContextCurrent(window);
-	
-	if (glewInit() != GLEW_OK)
-		std::cout << "Error: GLEW didnt initilize" << std::endl;
+void Application::InputHandler(float& delta)
+{
+}
 
-	std::cout << glGetString(GL_VERSION) << std::endl;
+void Application::Update(float& delta)
+{
+}
 
-	ImGui::CreateContext();
-	ImGui_ImplGlfwGL3_Init(window, true);
-	ImGui::StyleColorsDark();
-
-	/* Loop until the user closes the window */
-	while (!glfwWindowShouldClose(window))
-	{
-		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);
-		
-		ImGui_ImplGlfwGL3_NewFrame();
-
-		{
-			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-		}
-		
-
-		ImGui::Render();
-		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
-		
-		/* Swap front and back buffers */
-		glfwSwapBuffers(window);
-		
-		/* Poll for and process events */
-		glfwPollEvents();
-	}
-
-
-	ImGui_ImplGlfwGL3_Shutdown();
-	ImGui::DestroyContext();
-	glfwTerminate();
-	return 0;
+void Application::Render()
+{
 }
