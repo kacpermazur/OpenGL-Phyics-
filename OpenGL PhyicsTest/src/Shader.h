@@ -26,5 +26,6 @@ public:
 	void SetUniformMat4f(const std::string* name, const glm::mat4& matrix, bool useShader = false);
 
 private:
-	void ShaderErrorCheck(unsigned int& id, std::string type);
+	unsigned int ShaderErrorCheck(unsigned int& id, unsigned int& type);
+	unsigned int CompileShaderID(unsigned int type, const std::string* source);
 };
