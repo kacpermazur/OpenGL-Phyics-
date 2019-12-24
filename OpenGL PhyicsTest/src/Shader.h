@@ -10,15 +10,13 @@
 
 class Shader
 {
-private:
-	unsigned int m_BindID;
-
 public:
+	unsigned int m_BindID;
+	
 	Shader();
 	Shader& Bind();
 	
-
-	void Compile(const std::string* vertexShader, const std::string* fragmentShader);
+	void Compile(const char* vertexShader, const char* fragmentShader);
 
 	void SetUniform4f(const char* name, float v0, float v1, float v2, float v3, bool useShader = false);
 	void SetUniform4f(const char* name, glm::vec4 vec, bool useShader = false);
@@ -27,5 +25,5 @@ public:
 
 private:
 	unsigned int ShaderErrorCheck(unsigned int& id, unsigned int& type);
-	unsigned int CompileShaderID(unsigned int type, const std::string* source);
+	unsigned int CompileShaderID(unsigned int type, const char* source);
 };

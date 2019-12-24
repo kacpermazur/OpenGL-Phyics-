@@ -11,7 +11,7 @@ Shader& Shader::Bind()
 	return *this;
 }
 
-void Shader::Compile(const std::string* vertexShader, const std::string* fragmentShader)
+void Shader::Compile(const char* vertexShader, const char* fragmentShader)
 {
 	unsigned int vertexID, fragmentID;
 
@@ -82,13 +82,11 @@ unsigned int Shader::ShaderErrorCheck(unsigned int& id, unsigned int& type)
 	return id;
 }
 
-unsigned int Shader::CompileShaderID(unsigned type, const std::string* source)
+unsigned int Shader::CompileShaderID(unsigned type, const char* source)
 {
 	unsigned int id = glCreateShader(type);
 
-	const char* src = source->c_str();
-
-	glShaderSource(id, 1, &src, nullptr);
+	glShaderSource(id, 1, &source, nullptr);
 	glCompileShader(id);
 
 	
