@@ -6,6 +6,16 @@
 
 #include <iostream>
 
+#include "Application.h"
+#include "ResoruceManager.h"
+
+void InputCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
+
+const unsigned int SCREEN_WIDTH = 800;
+const unsigned int SCREEN_HEIGHT = 600;
+
+Application PhysicsCollisonsApp(SCREEN_WIDTH, SCREEN_HEIGHT);
+
 int main(void)
 {
 	GLFWwindow* window;
@@ -14,33 +24,56 @@ int main(void)
 	if (!glfwInit())
 		return -1;
 
-	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(800, 600, "Physics OpenGL", NULL, NULL);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+	window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Physics OpenGL", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
 		return -1;
 	}
-
-	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 
+	glewExperimental = GL_TRUE;
+	
 	if (glewInit() != GLEW_OK)
 		std::cout << "Error: GLEW didnt initilize" << std::endl;
+	
+	glGetError();
 
+	glfwSetKeyCallback(window, InputCallback);
+	
+	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	PhysicsCollisonsApp.Initialize();
+	
 	std::cout << glGetString(GL_VERSION) << std::endl;
 
 	ImGui::CreateContext();
 	ImGui_ImplGlfwGL3_Init(window, true);
 	ImGui::StyleColorsDark();
 
+	float deltaTime = 0.0f;
+	float lastFrame = 0.0f;
+
+	PhysicsCollisonsApp.m_state = ACTIVE;
+	
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
+		float currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+		glfwPollEvents();
 
+		PhysicsCollisonsApp.InputHandler(deltaTime);
+		PhysicsCollisonsApp.Update(deltaTime);
+		
 		/* Render here */
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
+		PhysicsCollisonsApp.Render();
+		
 		ImGui_ImplGlfwGL3_NewFrame();
 
 		{
@@ -53,14 +86,29 @@ int main(void)
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
-
-		/* Poll for and process events */
-		glfwPollEvents();
 	}
 
-
+	ResourceManager::Clear();
+	
 	ImGui_ImplGlfwGL3_Shutdown();
 	ImGui::DestroyContext();
 	glfwTerminate();
 	return 0;
+}
+
+void InputCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	{
+		std::cout << "Escape Pressed" << std::endl;
+		glfwSetWindowShouldClose(window, GL_TRUE);
+	}
+
+	if(key >= 0 && key < 1024)
+	{
+		if (action == GLFW_PRESS)
+			PhysicsCollisonsApp.m_input[key] = GL_TRUE;
+		else if (action == GLFW_RELEASE)
+			PhysicsCollisonsApp.m_input[key] = GL_FALSE;
+	}
 }

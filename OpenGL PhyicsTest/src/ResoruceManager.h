@@ -12,7 +12,7 @@ public:
 	static Shader LoadShader(const char* vertexShader, const char* fragmentShader, std::string name);
 	static Shader GetShader(std::string name);
 
-	void Clear();
+	static void Clear();
 	
 private:
 	ResourceManager() {}
