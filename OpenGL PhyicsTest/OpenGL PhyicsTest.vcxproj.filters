@@ -36,6 +36,9 @@
     <ClCompile Include="src\Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\libraries\glm\detail\_features.hpp">
@@ -789,6 +792,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -17,11 +17,11 @@ public:
 	
 	State m_state;
 
-	Application(unsigned int width, unsigned int height);
+	Application(const unsigned int width, const unsigned int height);
 	~Application();
 
 	void Initialize();
-	void InputHandler(float delta);
-	void Update(float delta);
+	void InputHandler(float& delta);
+	void Update(float& delta);
 	void Render();
 };
