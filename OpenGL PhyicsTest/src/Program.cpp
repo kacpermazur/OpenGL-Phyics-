@@ -35,66 +35,67 @@ int main(void)
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
 		std::cout << "Error: GLEW didnt initilize" << std::endl;
+	
 	glGetError();
+
+	glfwSetKeyCallback(window, key_callback);
+
+	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
+	PhysicsCollisonsApp.Initialize();
+
+	std::cout << glGetString(GL_VERSION) << std::endl;
+
+
+	float deltaTime = 0.0f;
+	float lastFrame = 0.0f;
+
+	PhysicsCollisonsApp.m_state = ACTIVE;
+
+	glm::vec3 testValue(0.0f, 0.0f, 0.0f);
+
+	ImGui::CreateContext();
+	ImGui_ImplGlfwGL3_Init(window, true);
+	ImGui::StyleColorsDark();
+	
+	/* Loop until the user closes the window */
+	while (!glfwWindowShouldClose(window))
 	{
+		float currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
 
 		glfwSetKeyCallback(window, key_callback);
 
-		glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-		glFrontFace(GL_CW);
-		glCullFace(GL_FRONT);
-		glEnable(GL_CULL_FACE);
+		PhysicsCollisonsApp.InputHandler(deltaTime);
+		PhysicsCollisonsApp.Update(deltaTime);
 
-		PhysicsCollisonsApp.Initialize();
-
-		std::cout << glGetString(GL_VERSION) << std::endl;
-
-
-		float deltaTime = 0.0f;
-		float lastFrame = 0.0f;
-
-		PhysicsCollisonsApp.m_state = ACTIVE;
-
-		glm::vec3 testValue(0.0f, 0.0f, 0.0f);
-
-		ImGui::CreateContext();
-		ImGui_ImplGlfwGL3_Init(window, true);
-		ImGui::StyleColorsDark();
+		/* Render here */
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
 		
-		/* Loop until the user closes the window */
-		while (!glfwWindowShouldClose(window))
+		ImGui_ImplGlfwGL3_NewFrame();
+		
+		PhysicsCollisonsApp.Render();
+
 		{
-			float currentFrame = glfwGetTime();
-			deltaTime = currentFrame - lastFrame;
-			lastFrame = currentFrame;
-
-			glfwSetKeyCallback(window, key_callback);
-
-			PhysicsCollisonsApp.InputHandler(deltaTime);
-			PhysicsCollisonsApp.Update(deltaTime);
-
-			/* Render here */
-			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
-			
-			ImGui_ImplGlfwGL3_NewFrame();
-			
-			PhysicsCollisonsApp.Render();
-
-			{
-				ImGui::SliderFloat3("Rotation", &testValue.x, -1.0f, 2.0f);
-				ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-			}
-			
-
-			ImGui::Render();
-			ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
-			
-			/* Swap front and back buffers */
-			glfwSwapBuffers(window);
-			glfwPollEvents();
+			ImGui::SliderFloat3("Rotation", &testValue.x, -1.0f, 2.0f);
+			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		}
+		
+
+		ImGui::Render();
+		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
+		
+		/* Swap front and back buffers */
+		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
+
 
 	ResourceManager::Clear();
 	
