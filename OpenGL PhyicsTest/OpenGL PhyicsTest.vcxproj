@@ -168,6 +168,7 @@
     <ClCompile Include="src\Program.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -425,6 +426,7 @@
     <ClInclude Include="src\libraries\stb_image\stb_image.h" />
     <ClInclude Include="src\ResoruceManager.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\SpriteRenderer.h" />
     <ClInclude Include="src\Texture.h" />
   </ItemGroup>
   <ItemGroup>
