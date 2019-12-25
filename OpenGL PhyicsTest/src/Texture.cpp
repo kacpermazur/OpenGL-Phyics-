@@ -6,10 +6,11 @@ Texture::Texture()
 	glGenBuffers(1, &this->m_BindID);
 }
 
-void Texture::Generate(unsigned width, unsigned height, unsigned char* data)
+void Texture::Generate(unsigned width, unsigned height, unsigned int bpp, unsigned char* data)
 {
 	this->m_width = width;
 	this->m_height = height;
+	this->m_bitsPerPixel = bpp;
 
 	glBindTexture(GL_TEXTURE_2D, this->m_BindID);
 	glTexImage2D(GL_TEXTURE_2D, 0, this->m_internal_format, width, height, 0, this->m_image_format, GL_UNSIGNED_BYTE, data);

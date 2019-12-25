@@ -1,7 +1,9 @@
-﻿  stb_imagecpp.cpp
-  Program.cpp
+﻿  Program.cpp
+  ResourceManager.cpp
+C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\Program.cpp(68,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Texture.cpp
   Generating Code...
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\Program.cpp(70,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ResourceManager.cpp(69,25): warning C4101: 'e': unreferenced local variable
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
 glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\bin\x64\Debug\vc120.pdb'; linking object as if no debug info

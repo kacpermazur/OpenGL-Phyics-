@@ -19,7 +19,7 @@ public:
 
 	Texture();
 
-	void Generate(unsigned int width, unsigned int height, unsigned char* data);
+	void Generate(unsigned int width, unsigned int height, unsigned int bpp, unsigned char* data);
 
 	void Bind() const;
 };
