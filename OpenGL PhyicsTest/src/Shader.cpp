@@ -38,6 +38,14 @@ void Shader::SetUniform4f(const char* name, float v0, float v1, float v2, float 
 	glUniform4f(glGetUniformLocation(this->m_BindID, name), v0, v1, v2, v3);
 }
 
+void Shader::SetUniform3f(const char* name, glm::vec3 vec, bool useShader)
+{
+	if (useShader)
+		this->Bind();
+
+	glUniform3f(glGetUniformLocation(this->m_BindID, name), vec.x, vec.y, vec.z);
+}
+
 void Shader::SetUniform4f(const char* name, glm::vec4 vec, bool useShader)
 {
 	if (useShader)
