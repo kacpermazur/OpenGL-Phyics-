@@ -168,6 +168,7 @@
     <ClCompile Include="src\Program.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
@@ -424,6 +425,7 @@
     <ClInclude Include="src\libraries\stb_image\stb_image.h" />
     <ClInclude Include="src\ResoruceManager.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\libraries\glm\detail\func_common.inl" />
