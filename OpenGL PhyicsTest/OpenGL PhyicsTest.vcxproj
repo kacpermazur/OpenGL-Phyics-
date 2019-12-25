@@ -430,6 +430,8 @@
     <ClInclude Include="src\Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\Sprite.frag" />
+    <None Include="res\shaders\Sprite.vs" />
     <None Include="src\libraries\glm\detail\func_common.inl" />
     <None Include="src\libraries\glm\detail\func_common_simd.inl" />
     <None Include="src\libraries\glm\detail\func_exponential.inl" />

@@ -42,4 +42,24 @@ SpriteRenderer::~SpriteRenderer()
 
 void SpriteRenderer::DrawSprite(Texture& texture, glm::vec2 position, glm::vec2 size, float rotation, glm::vec3 color)
 {
+	this->m_shader.Bind();
+
+	glm::mat4 model;
+	model = glm::translate(model, glm::vec3(position, 0.0f));
+
+	model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f));
+	model = glm::rotate(model, rotation, glm::vec3(0.0f, 0.0f, 1.0f));
+	model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f));
+
+	model = glm::scale(model, glm::vec3(size, 1.0f));
+
+	this->m_shader.SetUniformMat4f("u_model", model);
+	this->m_shader.SetUniform3f("u_spriteColor", color);
+
+	glActiveTexture(GL_TEXTURE0);
+	texture.Bind();
+
+	glBindVertexArray(this->m_quadVAO);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glBindVertexArray(0);
 }
