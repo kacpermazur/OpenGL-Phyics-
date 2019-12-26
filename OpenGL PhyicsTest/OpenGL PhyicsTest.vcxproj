@@ -173,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\libraries\glm\common.hpp" />
     <ClInclude Include="src\libraries\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\libraries\glm\detail\compute_vector_relational.hpp" />

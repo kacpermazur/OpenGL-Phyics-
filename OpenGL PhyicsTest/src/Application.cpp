@@ -34,6 +34,7 @@ void Application::Initialize()
 
 void Application::InputHandler(float& delta)
 {
+	
 }
 
 void Application::Update(float& delta)
