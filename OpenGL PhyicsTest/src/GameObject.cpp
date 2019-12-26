@@ -11,6 +11,10 @@ GameObject::GameObject(glm::vec3 pos, glm::vec3 size, Texture texture, glm::vec3
 {
 }
 
+GameObject::~GameObject()
+{
+}
+
 void GameObject::Draw(SpriteRenderer& renderer)
 {
 	renderer.DrawSprite(this->m_texture, this->m_position, this->m_size, this->m_rotation, this->m_color);
