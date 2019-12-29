@@ -56,6 +56,7 @@ void Application::Initialize()
 	// Renderer ToDO: Renderer Class Agnostic (2D/3D) 
 	renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 
+	// Game Objects
 	player = new GameObject(glm::vec3(300, 300,0),glm::vec3(100, 100,1), ResourceManager::GetTexture("sonic"));
 	testObj = new GameObject(glm::vec3(100, 100, 0), glm::vec3(100, 100, 1), ResourceManager::GetTexture("pepe"));
 }

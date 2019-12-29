@@ -430,6 +430,7 @@
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\SpriteRenderer.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\VertexLayout.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Sprite.frag" />
