@@ -16,7 +16,7 @@ Shader ResourceManager::LoadShader(const char* vertexShader, const char* fragmen
 	return m_Shaders[name];
 }
 
-Shader ResourceManager::GetShader(std::string name)
+Shader& ResourceManager::GetShader(std::string name)
 {
 	return m_Shaders[name];
 }

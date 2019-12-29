@@ -1,2 +1,9 @@
 ﻿  Application.cpp
+  GameObject.cpp
+  Program.cpp
+  ResourceManager.cpp
+C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\Program.cpp(68,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  SpriteRenderer.cpp
+  Generating Code...
+C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ResourceManager.cpp(69,25): warning C4101: 'e': unreferenced local variable
   OpenGL PhyicsTest.vcxproj -> C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\bin\x64\Debug\OpenGL PhyicsTest.exe

@@ -28,8 +28,8 @@ void Application::Initialize()
 
 	ResourceManager::LoadTexture("res/img/redsonic.png", GL_TRUE, "sonic");
 
-	auto testShader = ResourceManager::GetShader("sprite");
-	renderer = new SpriteRenderer(testShader);
+	//auto testShader = ;
+	renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 }
 
 void Application::InputHandler(float& delta)
