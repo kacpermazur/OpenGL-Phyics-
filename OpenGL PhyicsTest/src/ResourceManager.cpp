@@ -27,7 +27,7 @@ Texture ResourceManager::LoadTexture(const char* file, bool alpha, std::string n
 	return m_Textures[name];
 }
 
-Texture ResourceManager::GetTexture(std::string name)
+Texture& ResourceManager::GetTexture(std::string name)
 {
 	return m_Textures[name];
 }
@@ -91,7 +91,7 @@ Texture ResourceManager::LoadTextureFromFile(const char* file, bool& alpha)
 
 	int width, height, bpp;
 
-	//stbi_set_flip_vertically_on_load(1);
+	stbi_set_flip_vertically_on_load(1);
 	unsigned char* image = stbi_load(file, &width, &height, &bpp, 4);
 
 	texture.Generate(width, height, bpp, image);

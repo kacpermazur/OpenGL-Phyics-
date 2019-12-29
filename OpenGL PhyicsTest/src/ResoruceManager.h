@@ -15,7 +15,7 @@ public:
 	static Shader& GetShader(std::string name);
 
 	static Texture LoadTexture(const char* file, bool alpha, std::string name);
-	static Texture GetTexture(std::string name);
+	static Texture& GetTexture(std::string name);
 
 	static void Clear();
 	

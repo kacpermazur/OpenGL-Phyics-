@@ -5,7 +5,7 @@ GameObject::GameObject()
 {
 }
 
-GameObject::GameObject(glm::vec3 pos, glm::vec3 size, Texture texture, glm::vec3 velocity, glm::vec3 color)
+GameObject::GameObject(glm::vec3 pos, glm::vec3 size, Texture& texture, glm::vec3 velocity, glm::vec3 color)
 	: m_position(pos), m_size(size), m_velocity(velocity), m_color(color), m_texture(texture), m_isSolid(false)
 
 {
