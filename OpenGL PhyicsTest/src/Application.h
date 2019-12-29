@@ -23,5 +23,6 @@ public:
 	void Initialize();
 	void InputHandler(float& delta);
 	void Update(float& delta);
+	void PhysicsUpdate();
 	void Render();
 };

@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 #include "ResoruceManager.h"
 #include "SpriteRenderer.h"
 #include "GameObject.h"
@@ -36,7 +39,7 @@ void Application::Initialize()
 	// Texture loading
 	ResourceManager::LoadTexture("res/img/redsonic.png", GL_TRUE, "sonic");
 
-	// Renderer
+	// Renderer ToDO: Renderer Class Agnostic (2D/3D) 
 	renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 
 	player = new GameObject(glm::vec3(200, 200,0),glm::vec3(200, 200,1), ResourceManager::GetTexture("sonic"));
@@ -44,15 +47,52 @@ void Application::Initialize()
 
 void Application::InputHandler(float& delta)
 {
-	
+	if(this->m_state == ACTIVE)
+	{
+		// ToDo: InputManager Class
+		
+		float movementSpeed = 200.0f * delta;
+
+		if(this->m_input[GLFW_KEY_W])
+		{
+			player->m_position.y += movementSpeed;
+		}
+		if (this->m_input[GLFW_KEY_S])
+		{
+			player->m_position.y -= movementSpeed;
+		}
+		if (this->m_input[GLFW_KEY_D])
+		{
+			player->m_position.y += movementSpeed;
+		}
+		if (this->m_input[GLFW_KEY_A])
+		{
+
+		}
+		
+	}
 }
 
 void Application::Update(float& delta)
 {
+	this->PhysicsUpdate();
+}
+
+void Application::PhysicsUpdate()
+{
+	
 }
 
 void Application::Render()
 {
 	
 	player->Draw(*renderer);
+}
+
+//todo: Add Entities Transfrom & Collider
+
+// AABB Collisions
+static bool OnEnterTrigger2D(GameObject& target, GameObject& other)
+{
+	return true;
 }
