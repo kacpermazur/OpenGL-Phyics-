@@ -1248,5 +1248,7 @@
     </None>
     <None Include="res\shaders\Sprite.vs" />
     <None Include="res\shaders\Sprite.frag" />
+    <None Include="res\shaders\Mesh.frag" />
+    <None Include="res\shaders\Mesh.vs" />
   </ItemGroup>
 </Project>

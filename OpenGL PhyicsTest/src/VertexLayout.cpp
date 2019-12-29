@@ -1,5 +1,6 @@
 #include "VertexLayout.h"
 
+
 VertexLayout::VertexLayout()
 	:m_Stride(0)
 {
