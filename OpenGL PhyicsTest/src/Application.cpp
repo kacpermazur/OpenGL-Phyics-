@@ -8,7 +8,10 @@
 #include "GameObject.h"
 
 #include <iostream>
+#include <glm/gtx/string_cast.hpp>
 #include "VertexLayout.h"
+
+#include "ModelLoader.h"
 
 //todo: Add Entities Transfrom & Collider
 
@@ -47,13 +50,23 @@ void Application::Initialize()
 	// Perspective Setup
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->m_width), static_cast<float>(this->m_height), 0.0f, -1.0f, 1.0f);
 
+	//glm::mat4 projection = glm::perspective(glm::radians(45.0f), static_cast<float>(this->m_width) / static_cast<float>(this->m_height), 0.1f, 100.0f);
+
 	// Uniform Binds
 	ResourceManager::GetShader("sprite").Bind().SetUniform1i("u_image", 0);
 	ResourceManager::GetShader("sprite").Bind().SetUniformMat4f("u_projection", projection);
 
+	// Camera
+	glm::mat4 view = glm::mat4(1);
+	std::cout << glm::to_string(view) << std::endl;
+	view = glm::translate(view, glm::vec3(1, 1, 1));
+	std::cout << glm::to_string(view) << std::endl;
+	
+	ResourceManager::GetShader("sprite").Bind().SetUniformMat4f("u_view", view);
+
 	// Texture loading
 	ResourceManager::LoadTexture("res/img/redsonic.png", GL_TRUE, "sonic");
-	ResourceManager::LoadTexture("res/img/pepe.png", GL_TRUE, "pepe");
+	ResourceManager::LoadTexture("res/models/Creeper/Texture.png", GL_TRUE, "pepe");
 
 	// Renderer ToDO: Renderer Class Agnostic (2D/3D) 
 	renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
@@ -63,7 +76,21 @@ void Application::Initialize()
 	testObj = new GameObject(glm::vec3(100, 100, 0), glm::vec3(100, 100, 1), ResourceManager::GetTexture("pepe"));
 	
 
+	Mesh mesh = Loader::LoadMesh("res/models/Creeper/Creeper.obj");
 	
+	std::cout << "Vertices" << std::endl;
+
+	for (auto& vertex : mesh.vertices)
+	{
+		std::cout << glm::to_string(vertex.position) << glm::to_string(vertex.texCoord) << std::endl;
+	}
+
+	std::cout << "Indices" << std::endl;
+
+	for (auto& index : mesh.indices)
+	{
+		std::cout << index << std::endl;
+	}
 }
 
 void Application::InputHandler(float& delta)

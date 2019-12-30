@@ -18,6 +18,6 @@ public:
 	SpriteRenderer(Shader& shader);
 	~SpriteRenderer();
 
-	void DrawSprite(Texture& texture, glm::vec2 position, glm::vec2 size = glm::vec2(5, 5), float rotation = 0.0f, glm::vec3 color = glm::vec3(1.0f));
+	void DrawSprite(Texture& texture, glm::vec3 position, glm::vec3 size = glm::vec3(5, 5,5), float rotation = 0.0f, glm::vec3 color = glm::vec3(1.0f));
 };
 
