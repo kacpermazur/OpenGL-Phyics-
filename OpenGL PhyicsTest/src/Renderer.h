@@ -18,6 +18,6 @@ public:
 	Renderer(Shader& shader);
 	~Renderer();
 
-	void DrawSprite(Texture& texture, glm::vec3 position, glm::vec3 size = glm::vec3(5, 5,5), float rotation = 0.0f, glm::vec3 color = glm::vec3(1.0f));
+	void DrawSprite(Texture& texture, glm::vec3 position, glm::vec3 size = glm::vec3(5, 5,5), float rotation = 0.0f, glm::vec3 rot = glm::vec3(0,0,1.0f), glm::vec3 color = glm::vec3(1.0f));
 };
 

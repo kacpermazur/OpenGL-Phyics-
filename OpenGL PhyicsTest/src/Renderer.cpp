@@ -107,7 +107,7 @@ Renderer::~Renderer()
 	glDeleteVertexArrays(1, &this->m_quadVAO);
 }
 
-void Renderer::DrawSprite(Texture& texture, glm::vec3 position, glm::vec3 size, float rotation, glm::vec3 color)
+void Renderer::DrawSprite(Texture& texture, glm::vec3 position, glm::vec3 size, float rotation, glm::vec3 rot, glm::vec3 color)
 {
 	this->m_shader.Bind();
 
@@ -115,7 +115,7 @@ void Renderer::DrawSprite(Texture& texture, glm::vec3 position, glm::vec3 size, 
 	model = glm::translate(model, position);
 
 	model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.5f * size.z));
-	model = glm::rotate(model, rotation, glm::vec3(1.0f, 0.0f, 0.0f));
+	model = glm::rotate(model, rotation, rot);
 	model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, -0.5f * size.z));
 
 	model = glm::scale(model, size);

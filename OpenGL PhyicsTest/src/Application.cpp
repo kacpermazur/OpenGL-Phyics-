@@ -117,7 +117,7 @@ void Application::Initialize()
 	ResourceManager::LoadShader("res/shaders/Sprite.vs", "res/shaders/Sprite.frag", "sprite");
 
 	// Perspective Setup
-	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->m_width), static_cast<float>(this->m_height), 0.0f, -1.0f, 200.0f);
+	glm::mat4 projection = glm::ortho(100.0f, static_cast<float>(this->m_width), static_cast<float>(this->m_height), 100.0f, -200.0f, 200.0f);
 
 	//glm::mat4 projection = glm::perspective(glm::radians(45.0f), static_cast<float>(this->m_width) / static_cast<float>(this->m_height), 0.1f, 100.0f);
 
@@ -127,7 +127,6 @@ void Application::Initialize()
 
 	// Camera
 	glm::mat4 view = glm::mat4(1);
-	view = glm::translate(view, glm::vec3(1, 1, 1));
 	
 	ResourceManager::GetShader("sprite").Bind().SetUniformMat4f("u_view", view);
 
@@ -142,8 +141,12 @@ void Application::Initialize()
 	player = new GameObject(glm::vec3(600, 300,0),glm::vec3(100, 100,100), ResourceManager::GetTexture("pepe"));
 	testObj = new GameObject(glm::vec3(200, 300, 0), glm::vec3(100, 100, 100), ResourceManager::GetTexture("pepe"), glm::vec3(0),glm::vec3(1.0f,0.1f,0.1f));
 
-	player->m_rotation = 0.0f;
-	testObj->m_rotation = 0.0f;
+
+	player->m_rot = glm::vec3(0, 0.2, 1.0f);
+	player->m_rotation = 0.2f;
+
+	testObj->m_rot = glm::vec3(0, 2, 1.0f);
+	testObj->m_rotation = 0.2f;
 }
 
 void Application::InputHandler(float& delta)
