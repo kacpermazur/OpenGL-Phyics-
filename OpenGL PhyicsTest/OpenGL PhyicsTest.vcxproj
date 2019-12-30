@@ -166,13 +166,11 @@
     <ClCompile Include="src\libraries\imgui\imgui_draw.cpp" />
     <ClCompile Include="src\libraries\imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\libraries\stb_image\stb_imagecpp.cpp" />
-    <ClCompile Include="src\MeshRenderer.cpp" />
     <ClCompile Include="src\Program.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\Texture.cpp" />
-    <ClCompile Include="src\VertexLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
@@ -428,7 +426,6 @@
     <ClInclude Include="src\libraries\imgui\stb_textedit.h" />
     <ClInclude Include="src\libraries\imgui\stb_truetype.h" />
     <ClInclude Include="src\libraries\stb_image\stb_image.h" />
-    <ClInclude Include="src\MeshRenderer.h" />
     <ClInclude Include="src\ModelLoader.h" />
     <ClInclude Include="src\ResoruceManager.h" />
     <ClInclude Include="src\Shader.h" />

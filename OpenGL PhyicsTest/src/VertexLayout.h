@@ -31,14 +31,41 @@ private:
 	unsigned int m_Stride;
 
 public:
-	VertexLayout();
+	VertexLayout()
+		:m_Stride(0)
+	{
+	}
 
-	template<typename T>
-	void Add(unsigned int count);
-	
-	template<> void Add<float>(unsigned int count);
-	template<> void Add<unsigned int>(unsigned int count);
+	template <typename T>
+	void Add(unsigned int count)
+	{
+		static_assert(false, "Unsupported Data Type");
+	}
 
-	const std::vector<VertexElement> GetElements() const;
-	unsigned int GetStride() const;
+	template <>
+	void Add<float>(unsigned int count)
+	{
+		m_Elements.push_back({ GL_FLOAT,count,GL_FALSE });
+
+		m_Stride += VertexElement::TypeSize(GL_FLOAT) * count;
+	}
+
+	template <>
+	void Add<unsigned int>(unsigned int count)
+	{
+		m_Elements.push_back({ GL_UNSIGNED_INT,count,GL_FALSE });
+
+		m_Stride += VertexElement::TypeSize(GL_UNSIGNED_INT) * count;
+	}
+
+	const std::vector<VertexElement> GetElements() const
+	{
+		return m_Elements;
+	}
+
+	unsigned int GetStride() const
+	{
+		return m_Stride;
+	}
+
 };

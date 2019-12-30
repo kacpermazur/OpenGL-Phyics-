@@ -8,6 +8,7 @@
 #include "GameObject.h"
 
 #include <iostream>
+#include "VertexLayout.h"
 
 //todo: Add Entities Transfrom & Collider
 
@@ -39,6 +40,7 @@ Application::~Application()
 
 void Application::Initialize()
 {
+	
 	// Shader Loading
 	ResourceManager::LoadShader("res/shaders/Sprite.vs", "res/shaders/Sprite.frag", "sprite");
 
@@ -59,10 +61,14 @@ void Application::Initialize()
 	// Game Objects
 	player = new GameObject(glm::vec3(300, 300,0),glm::vec3(100, 100,1), ResourceManager::GetTexture("sonic"));
 	testObj = new GameObject(glm::vec3(100, 100, 0), glm::vec3(100, 100, 1), ResourceManager::GetTexture("pepe"));
+	
+
+	
 }
 
 void Application::InputHandler(float& delta)
 {
+	
 	if(this->m_state == ACTIVE)
 	{
 		// ToDo: InputManager Class
@@ -87,6 +93,7 @@ void Application::InputHandler(float& delta)
 		}
 		
 	}
+	
 }
 
 void Application::Update(float& delta)
@@ -104,7 +111,6 @@ void Application::PhysicsUpdate()
 
 void Application::Render()
 {
-	
 	player->Draw(*renderer);
 	testObj->Draw(*renderer);
 }
