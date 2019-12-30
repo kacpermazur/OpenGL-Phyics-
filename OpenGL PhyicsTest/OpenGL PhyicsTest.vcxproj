@@ -169,7 +169,7 @@
     <ClCompile Include="src\Program.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\SpriteRenderer.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -429,13 +429,11 @@
     <ClInclude Include="src\ModelLoader.h" />
     <ClInclude Include="src\ResoruceManager.h" />
     <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\SpriteRenderer.h" />
+    <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\VertexLayout.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Mesh.frag" />
-    <None Include="res\shaders\Mesh.vs" />
     <None Include="res\shaders\Sprite.frag" />
     <None Include="res\shaders\Sprite.vs" />
     <None Include="src\libraries\glm\detail\func_common.inl" />

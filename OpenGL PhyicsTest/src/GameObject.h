@@ -4,7 +4,7 @@
 #include <glm/glm.hpp>
 
 #include "Texture.h"
-#include "SpriteRenderer.h"
+#include "Renderer.h"
 
 class GameObject
 {
@@ -21,5 +21,5 @@ public:
 	GameObject();
 	GameObject(glm::vec3 pos, glm::vec3 size, Texture& texture, glm::vec3 velocity = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 color = glm::vec3(1.0f));
 	virtual ~GameObject();
-	virtual void Draw(SpriteRenderer& renderer);
+	virtual void Draw(Renderer& renderer);
 };

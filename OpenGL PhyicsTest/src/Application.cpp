@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 
 #include "ResoruceManager.h"
-#include "SpriteRenderer.h"
+#include "Renderer.h"
 #include "GameObject.h"
 
 #include <iostream>
@@ -52,18 +52,18 @@ static glm::vec3 ColDirection(GameObject& target, GameObject& other)
 	float colLeft = targetRight - other.m_position.x;
 	float colRight = otherRight - target.m_position.x;
 
-	float colBack = targetFoward - other.m_position.z;
-	float colFoward = otherFoward - target.m_position.z;
+	float colFoward = targetFoward - other.m_position.z;
+	float colBack = otherFoward - target.m_position.z;
 
 	if (colTop < colBottom && colTop < colLeft && colTop < colRight && colTop < colBack && colTop < colFoward)
 	{
 		std::cout << "TOP COLLISION!" << std::endl;
-		return glm::vec3(0, 1, 0);
+		return glm::vec3(0, -1, 0);
 	}
 	if (colBottom < colTop && colBottom < colLeft && colBottom < colRight && colBottom < colBack && colBottom < colFoward)
 	{
 		std::cout << "BOTTOM COLLISION!" << std::endl;
-		return glm::vec3(0, -1, 0);
+		return glm::vec3(0, 1, 0);
 	}
 	if (colLeft < colRight && colLeft < colBottom && colLeft < colTop && colLeft < colFoward && colLeft < colBack)
 	{
@@ -92,7 +92,7 @@ static glm::vec3 ColDirection(GameObject& target, GameObject& other)
 
 
 // App State Data
-SpriteRenderer* renderer;
+Renderer* renderer;
 GameObject* player;
 GameObject* testObj;
 
@@ -127,9 +127,7 @@ void Application::Initialize()
 
 	// Camera
 	glm::mat4 view = glm::mat4(1);
-	std::cout << glm::to_string(view) << std::endl;
 	view = glm::translate(view, glm::vec3(1, 1, 1));
-	std::cout << glm::to_string(view) << std::endl;
 	
 	ResourceManager::GetShader("sprite").Bind().SetUniformMat4f("u_view", view);
 
@@ -138,7 +136,7 @@ void Application::Initialize()
 	ResourceManager::LoadTexture("res/models/Creeper/Texture.png", GL_TRUE, "pepe");
 
 	// Renderer ToDO: Renderer Class Agnostic (2D/3D) 
-	renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+	renderer = new Renderer(ResourceManager::GetShader("sprite"));
 
 	// Game Objects
 	player = new GameObject(glm::vec3(600, 300,0),glm::vec3(100, 100,100), ResourceManager::GetTexture("pepe"));
