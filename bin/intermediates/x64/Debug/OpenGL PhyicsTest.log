@@ -1,11 +1,4 @@
-﻿  Application.cpp
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ModelLoader.h(84,1): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ModelLoader.h(85,1): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ModelLoader.h(86,1): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ModelLoader.h(425,1): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ModelLoader.h(427,1): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ModelLoader.h(427,1): warning C4267:         with
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ModelLoader.h(427,1): warning C4267:         [
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ModelLoader.h(427,1): warning C4267:             _Ty=unsigned int
-C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\ModelLoader.h(427,1): warning C4267:         ]
+﻿  Renderer.cpp
+C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\Renderer.cpp(38,2): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\OpenGL PhyicsTest\src\Renderer.cpp(76,111): warning C4312: 'type cast': conversion from 'unsigned int' to 'const void *' of greater size
   OpenGL PhyicsTest.vcxproj -> C:\Users\kacper\Documents\GitKraken\OpenGL-Phyics-\bin\x64\Debug\OpenGL PhyicsTest.exe

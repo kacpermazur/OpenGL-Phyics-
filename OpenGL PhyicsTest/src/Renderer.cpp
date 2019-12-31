@@ -11,11 +11,6 @@ void Renderer::InitializeRenderData()
 
 	float vertices[]
 	{
-		//0.0f, 1.0f, 0.0f, 1.0f, // 0
-		//1.0f, 0.0f, 1.0f, 0.0f, // 1
-		//0.0f, 0.0f, 0.0f, 0.0f, // 2
-		//1.0f, 1.0f, 1.0f, 1.0f, // 3
-		//
 		0.500000, -0.500000, -0.500000,0.340409, -0.000303,
 		0.500000, -0.500000, 0.500000,0.593540, -0.000303,
 		-0.500000, -0.500000, 0.500000,0.593540, 0.249793,
@@ -44,9 +39,6 @@ void Renderer::InitializeRenderData()
 
 	unsigned int index[]
 	{
-		//0,1,2,
-		//0,3,1
-		//
 		0,1,2,
 		0,2,3,
 		4,5,6,
@@ -107,7 +99,7 @@ Renderer::~Renderer()
 	glDeleteVertexArrays(1, &this->m_quadVAO);
 }
 
-void Renderer::DrawSprite(Texture& texture, glm::vec3 position, glm::vec3 size, float rotation, glm::vec3 rot, glm::vec3 color)
+void Renderer::Draw(Texture& texture, glm::vec3 position, glm::vec3 size, float rotation, glm::vec3 rot, glm::vec3 color)
 {
 	this->m_shader.Bind();
 
@@ -127,7 +119,6 @@ void Renderer::DrawSprite(Texture& texture, glm::vec3 position, glm::vec3 size, 
 	texture.Bind();
 
 	glBindVertexArray(this->m_quadVAO);
-	//glDrawArrays(GL_TRIANGLES, 0, 6);
 	glDrawElements(GL_TRIANGLES, m_Count, GL_UNSIGNED_INT, nullptr);
 	glBindVertexArray(0);
 }
