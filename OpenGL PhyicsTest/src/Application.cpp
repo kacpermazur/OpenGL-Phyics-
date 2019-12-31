@@ -108,6 +108,7 @@ Application::~Application()
 {
 	delete renderer;
 	delete player;
+	delete testObj;
 }
 
 void Application::Initialize()
@@ -131,7 +132,7 @@ void Application::Initialize()
 	ResourceManager::GetShader("sprite").Bind().SetUniformMat4f("u_view", view);
 
 	// Texture loading
-	ResourceManager::LoadTexture("res/img/redsonic.png", GL_TRUE, "sonic");
+	//ResourceManager::LoadTexture("res/img/redsonic.png", GL_TRUE, "sonic");
 	ResourceManager::LoadTexture("res/models/Creeper/Texture.png", GL_TRUE, "pepe");
 
 	// Renderer ToDO: Renderer Class Agnostic (2D/3D) 
@@ -178,6 +179,7 @@ void Application::InputHandler(float& delta)
 
 void Application::Update(float& delta)
 {
+	//
 	this->PhysicsUpdate();
 }
 
